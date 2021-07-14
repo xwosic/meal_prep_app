@@ -1,4 +1,10 @@
 ># meal_prep_app
+>>## description
+>>This is web application project about preparing meals for all week. In this app user can
+>>* create recipes
+>>* group them
+>>* export gathered recipes to shopping list
+>>
 >>## installation
 >>### follow these commands to set up environment and project:
 >>* first make sure that your Python is 3.6 or greater
