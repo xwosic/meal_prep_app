@@ -9,9 +9,22 @@
 >>
 >>* in folder where you clone repo create virtual environment
 >>    * python -m venv venv
+>>
+>>* activate the venv
+>>    * on unix: source venv/bin/activate
+>>    * on windows: source venv/Scripts/activate 
+>>    
+>>* go to meal_prep_project
+>>    * cd meal_prep_project
 >>  
 >>* there should be requirements.txt file in it use it to install all packages
 >>    * python -m pip install -r requirements.txt
 >>
+>> * get .env file with secrets
+>>    * contact me ;)
+>>
 >>* migrate project to create database
 >>    * python manage.py migrate
+>>
+>>* run project and enter url
+>>    * python manage.py runserver
