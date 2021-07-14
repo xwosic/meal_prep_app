@@ -3,7 +3,7 @@
 >>### follow these commands to set up environment and project:
 >>* first make sure that your Python is 3.6 or greater
 >>  * python --version
->>  
+>>
 >>* clone repo to selected folder
 >>    * git clone https://github.com/xwosic/meal_prep_project.git
 >>
