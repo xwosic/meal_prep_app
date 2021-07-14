@@ -1,0 +1,31 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Edytuj przepis{% endblock %}
+{% block body %}
+<p>{{is_recip_new}}</p>
+{% if is_recipe_new %}
+<h1>Dokończ tworzyć przepis</h1>
+{% else %}
+<h1>Edytuj przepis</h1>
+{% endif %}
+<form method="post" action="">
+    {% csrf_token %}
+    <button type="submit" name="delete_recipe" value="Yes">Usuń przepis</button>
+</form>
+<h2>Składniki:</h2>
+{% for amount in amounts %}
+    <p>{{ amount }}</p>
+    {% endfor %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Dodaj nowy składnik</h3>
+    {{ amount_form.as_p }}
+    <button type="submit">Dodaj</button>
+</form>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Przepis</h3>
+    {{ edit_recipe_form.as_p }}
+    <button type="submit">Zapisz</button>
+    <a href="{% url 'meal_prep_app:recipes' %}">Anuluj</a>
+</form>
+{% endblock %}

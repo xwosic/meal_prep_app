@@ -1,0 +1,10 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+<form method="post" action="{{ target_url }}">
+    {{ question }}
+    {% csrf_token %}
+    <button type="submit" name="{{ question }}" value="Yes">Tak</button>
+    <button type="submit" name="{{ question }}" value="No">Nie</button>
+</form>
+{% endblock %}

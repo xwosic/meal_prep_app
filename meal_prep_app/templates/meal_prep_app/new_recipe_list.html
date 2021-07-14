@@ -1,0 +1,11 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Nowa list przepisów{% endblock %}
+{% block body %}
+<form method="post" name="Lista przepisow">
+    {% csrf_token %}
+    {{ recipe_list_form }}
+    <button type="submit">Zapisz listę</button>
+    <a href="{% url 'meal_prep_app:recipes' %}">Anuluj</a>
+</form>
+
+{% endblock %}

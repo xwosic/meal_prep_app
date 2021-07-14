@@ -1,0 +1,23 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Nowa lista zakupów{% endblock %}
+{% block body %}
+<h2>Listy przepisów</h2>
+{% for recipe_list in recipe_lists %}
+<p>{{ recipe_list }}</p>
+{% endfor %}
+<h2>Przepisy</h2>
+{% for recipe in recipes %}
+<p>{{ recipe }}</p>
+{% endfor %}
+<h2>Składniki</h2>
+{% for amount in amounts %}
+<p>{{ amount }}</p>
+{% endfor %}
+<form method="post" name="Lista przepisow">
+    {% csrf_token %}
+    {{ shopping_list_form.as_p }}
+    <button type="submit" name="shopping_list_form">Zapisz listę zakupów</button>
+    <a href="{% url 'meal_prep_app:recipes' %}"><button type="button">Anuluj</button></a>
+</form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'meal_prep_app/main.html' %}
+{% load pluralize_pl %}
+{% block title %}Wszystkie przepisy{% endblock %}
+{% block body %}
+
+<a href="{% url 'meal_prep_app:home' %}">Wróć</a>
+
+    {% for recipe in recipes %}
+        <a href="{% url 'meal_prep_app:detail' recipe.pk %}"><h1>{{ recipe.title }}</h1></a>
+        <h2>{{ recipe.pub_date|date:"Y.m.d" }}</h2>
+        <h4>{{ recipe.description|linebreaks }}</h4>
+        <br>
+        {% endfor %}
+
+{% endblock %}

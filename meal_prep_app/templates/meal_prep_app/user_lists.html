@@ -1,0 +1,14 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Zapisane listy przepisów{% endblock%}
+{% block body %}
+<h1>Moje listy przepisów</h1>
+<ul>
+    {% for list in user_lists %}
+        <li><a href="{% url 'meal_prep_app:recipe_list' list.pk %}">{{ list.title }}</a></li>
+        {%endfor%}
+    <li>
+        <a href="{% url 'meal_prep_app:new_recipe_list' %}"><button type="button">Nowa lista przepisów</button></a>
+    </li>
+</ul>
+{% endblock %}
+

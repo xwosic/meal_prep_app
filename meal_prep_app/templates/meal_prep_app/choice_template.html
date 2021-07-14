@@ -1,0 +1,14 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+<form method="post" action="{{ target_url }}">
+    {{ question }}
+    {% csrf_token %}
+    {% for choice in choices %}
+        <li>
+            <button type="submit" name="{{choice.name}}" value="{{choice.value}}">{{choice.text}}</button>
+        </li>
+        {% endfor %}
+    <button type="submit" name="Anuluj" value="Cancel">Anuluj</button>
+</form>
+{% endblock %}

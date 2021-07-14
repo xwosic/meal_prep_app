@@ -1,0 +1,34 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Lista przepisów{% endblock %}
+{% block body %}
+<h1>
+    {{ list_name }}
+    <form method="post" action="">
+        {% csrf_token %}
+        <button type="submit" name="create_shopping_list">Lista zakupów</button>
+    </form>
+</h1>
+<ul>
+    {% for recipe in list_of_recipes %}
+        <li>
+
+            <form method="post" action="{{target_url}}">
+                <a href="{% url 'meal_prep_app:detail' recipe.pk %}">{{recipe.title}}</a>
+                {% csrf_token %}
+                <button type="submit" name="{{recipe.choice.name}}" value="{{recipe.choice.value}}">{{recipe.choice.text}}</button>
+            </form>
+        </li>
+        {% endfor %}
+    <li>
+        <form action="" method="post">
+            {%csrf_token%}
+            <button type="submit" name="add_recipe" value="True">Dodaj przepis do listy</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
+
+<a href="{% url 'meal_prep_app:choose_recipe' %}">
+    {% csrf_token %}
+    <button type="button">Dodaj przepis do listy</button>
+</a>

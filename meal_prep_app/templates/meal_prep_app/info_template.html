@@ -1,0 +1,11 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+<form method="post" action="{{ target_url }}">
+    {% for i in info %}
+        <p>{{ i }}</p>
+        {% endfor %}
+    {% csrf_token %}
+    <button type="submit" name="{{ info }}" value="Ok">Ok</button>
+</form>
+{% endblock %}

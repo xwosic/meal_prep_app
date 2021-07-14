@@ -1,0 +1,13 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Moje przepisy{% endblock%}
+{% block body %}
+<h1>Moje przepisy</h1>
+<ul>
+    {% for recipe in recipes %}
+        <li><a href="{% url 'meal_prep_app:detail' recipe.pk %}">{{ recipe.title }}</a></li>
+        {%endfor%}
+    <li>
+        <a href="{% url 'meal_prep_app:new_recipe' %}"><button type="button">Stwórz przepis</button></a>
+    </li>
+</ul>
+{% endblock %}

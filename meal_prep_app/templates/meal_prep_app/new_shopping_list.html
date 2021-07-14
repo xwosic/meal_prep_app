@@ -1,0 +1,22 @@
+{% extends 'meal_prep_app/main.html' %}
+{% block title %}Nowa lista zakupów{% endblock %}
+{% block body %}
+
+<!--{% for recipe_list in recipe_lists %}-->
+<!--<p>{{ recipe_list }}</p>-->
+<!--{% endfor %}-->
+<!--{% for recipe in recipes %}-->
+<!--<p>{{ recipe }}</p>-->
+<!--{% endfor %}-->
+<h2>Składniki do kupienia</h2>
+{% for item in items %}
+<p><input type="checkbox" value={{ item.checked }}></input>{{ item }}</p>
+{% endfor %}
+<form method="post" action="">
+    {% csrf_token %}
+    <p>{{ item_form }}</p>
+    <button type="submit" name="add_item">Dodaj do listy</button>
+    <a href="{% url 'meal_prep_app:recipes' %}"><button type="button">Anuluj</button></a>
+</form>
+
+{% endblock %}

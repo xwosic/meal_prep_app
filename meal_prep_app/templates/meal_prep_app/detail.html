@@ -1,0 +1,32 @@
+{% extends 'meal_prep_app/main.html' %}
+{% load pluralize_pl %}
+{% block title %}{{ recipe.title }}{% endblock %}
+{% block body %}
+    <a href="{% url 'meal_prep_app:recipes' %}">Wróć</a>
+    <h1>{{ recipe.title }}</h1>
+        <h2>{{ recipe.pub_date|date:"Y.m.d" }}</h2>
+        <h4>{{ recipe.description|linebreaks }}</h4>
+        <h4>Składniki dla {{ recipe.people }} {{ recipe.people|pluralize_pl:"osoby, osób" }}:</h4>
+        <ul>
+            <table style="width:25%">
+                {% for amount in recipe.list_of_amounts %}
+                    <tr>
+                        <td><h5>{{ amount.ingredient }}</h5></td>
+                        <td><h5>{{ amount.amount }}</h5></td>
+                        <td><h5>{{ amount.unit }}</h5></td>
+                    </tr>
+                    {% endfor %}
+            </table>
+        </ul>
+        <h3>Przepis:</h3>
+        <ul><h4>{{ recipe.recipe|linebreaks }}</h4></ul>
+<form method="post" action="">{%csrf_token%}<button type="submit" name="info">Informacje</button></form>
+{% if recipe.author.username == request_username %}
+    <a href="{% url 'meal_prep_app:edit_recipe' recipe.pk %}"><button type="button">Edytuj przepis</button></a>
+    {% endif %}
+
+{% if user.is_authenticated %}
+    <a href="{% url 'meal_prep_app:add_recipe_to_user_list' recipe.pk %}"><button type="button">Dodaj do mojej listy przepisów</button></a>
+    {% endif %}
+
+{% endblock %}

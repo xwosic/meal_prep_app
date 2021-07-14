@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://use.fontawesome.com/7cf433b332.js"></script>
+</head>
+<body>
+    <a href="{% url 'meal_prep_app:home' %}"><button type="button">Strona główna</button></a>
+    <a href="{% url 'meal_prep_app:user_lists' %}"><button type="button">Moje listy przepisów</button></a>
+    <a href="{% url 'meal_prep_app:user_recipes' %}"><button type="button">Moje przepisy</button></a>
+    <a href="{% url 'meal_prep_app:new_recipe' %}"><button type="button">Stwórz przepis</button></a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"><button type="button">Wyloguj: {{user.username}}</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button type="button">Zaloguj</button></a>
+        {% endif %}
+    <hr>
+    <br>
+    {% block body %}{% endblock %}
+</body>
+</html>
