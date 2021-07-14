@@ -26,9 +26,6 @@
 >>* there should be requirements.txt file in it use it to install all packages
 >>    * python -m pip install -r requirements.txt
 >>
->> * get .env file with secrets
->>    * contact me ;)
->>
 >>* migrate project to create database
 >>    * python manage.py migrate
 >>
