@@ -26,6 +26,9 @@
 >>* there should be requirements.txt file in it use it to install all packages
 >>    * python -m pip install -r requirements.txt
 >>
+>>* change SECRET_KEY to your own
+>>    * in .env set SECRET_KEY
+>>
 >>* migrate project to create database
 >>    * python manage.py migrate
 >>
